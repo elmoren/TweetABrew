@@ -5,24 +5,27 @@
 #include <SPI.h>
 #include <Twitter.h>
 
-/************************************************************************************************
+/*******************************************************************************
  *
  *                          TweetABrew - Home Brew Temperature Monitor
  *
  * Author:   Nathan Elmore
  * Date:     June, 2013
  *
- * Description: This project is uses the DS18B20 temerature sensor to moniter a home brew during
- * the fermentation stage. It sends tweets at specified intervals or when they temp is out of 
- * specified range.
+ * Description: This project is uses the DS18B20 temerature sensor to moniter a
+ * home brew during the fermentation stage. It sends tweets at specified 
+ * intervals or when they temp is out of the specified range.
  *
  * Future work:
- * 1. Temperature regulation: I would like to aquire a minifridge and add hardware so one could 
+ * 1. Temperature regulation: I would like to aquire a minifridge and add 
+ *    hardware so one could 
  *    program the arduino to 
- * 2. Add buttons/potentiometer so that the desired temp can be set without changing the 
+ * 2. Add buttons/potentiometer so that the desired temp can be set without 
+ *    changing the 
  *    code.
- * 3. Add another temperature sensor to moniter the temperature inside the fermentation vessel
- ***********************************************************************************************/
+ * 3. Add another temperature sensor to moniter the temperature inside the 
+ *    fermentation vessel
+ ******************************************************************************/
 
 #define ONE_WIRE_BUS 2
 
@@ -45,7 +48,8 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 /*
- * The previous temp reading is stored because the sensor sometimes reads noise. It seems to
+ * The previous temp reading is stored because the sensor sometimes reads noise.
+ * It seems to
  * like 0°C, 85°C and -127°C
  */ 
 float lastTempC;
@@ -113,7 +117,7 @@ void setup() {
   // Initial Tweet and LCD Set up
   initialTemp = sensors.getTempCByIndex(0);
   delay (5000);
-  initialTemp = sensors.getTempCByIndex(0); // Initial values are usually wrong, so need to let it warm up.
+  initialTemp = sensors.getTempCByIndex(0); // Need to let it warm up.
   
   lcd.setCursor(0, 1);
   // print the number of seconds since reset:
@@ -145,17 +149,16 @@ void setup() {
 /*
  * loop()
  *
- * Reads temps at intervals set by tempInterval. If the temperature is out of the desired
- * fermenting temperature range, sends a WARNING tweet. Otherwise, tweets the temperature based
- * on the tweetInterval. Will not give a warnign tweet twice, unless its longer than the 
- * warnInterval.
+ * Reads temps at intervals set by tempInterval. If the temperature is out of 
+ * the desired fermenting temperature range, sends a WARNING tweet. Otherwise, 
+ * tweets the temperature based on the tweetInterval. Will not give a warnign 
+ * tweet twice, unless its longer than the warnInterval.
  */
 void loop() {
   
   unsigned long currentMillis = millis();
   float currentTemp = sensors.getTempCByIndex(0);
-  int i;
-  
+
   /* Get temp and update LCD */
   if (currentMillis - lastTemp > tempInterval) {
     
@@ -168,8 +171,9 @@ void loop() {
      lcd.print((char)223);
      lcd.print("C   ");
 
-    /* Check if its warning */
-    if ( (currentTemp < minTempC || currentTemp > maxTempC) && (lastTemp < minTempC || lastTemp > maxTempC) ) { 
+     /* Warning if the current and last temp are out of range */
+    if ( (currentTemp < minTempC || currentTemp > maxTempC) && 
+         (lastTemp < minTempC || lastTemp > maxTempC) ) { 
       
       sprintf(tweet, "TweetABrew: Warning Temperature out of range: ");
       dtostrf(currentTemp, 3, 1, tweet + strlen(tweet));
