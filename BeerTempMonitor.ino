@@ -57,7 +57,7 @@ const float minTempC = 0.0;  // Set at extremes when There is no beer brewing
 const float maxTempC = 100.0;
 
 // Token to Tweet (get it from http://arduino-tweet.appspot.com/)
-Twitter twitter("1418815172-7FhPTRq9D3odnGstEOgDdEcBQzrXZxzGnF040Nv");
+Twitter twitter("Deleted For GitHub");
 char tweet[155];
 
 // Tweet containing temperature info
