@@ -1,4 +1,3 @@
-
 ## Name
 
 TweetABrew - An Arduino Project
@@ -13,5 +12,5 @@ In the future, I would like to get a mini so that TweetABrew can adjust the temp
 
 ## Images
 
-![Hardware](elmoren.github.com/TweetABrew/img/hardware.jpg)
-![LCD](elmoren.github.com/TweetABrew/img/lcd.jpg)
+![Hardware](elmoren.github.com/TweetABrew/tree/noToken/img/hardware.jpg)
+![LCD](elmoren.github.com/TweetABrew/tree/noToken/img/lcd.jpg)
