@@ -12,5 +12,6 @@ In the future, I would like to get a mini so that TweetABrew can adjust the temp
 
 ## Images
 
-![Hardware](elmoren.github.com/TweetABrew/tree/noToken/img/hardware.jpg)
-![LCD](elmoren.github.com/TweetABrew/tree/noToken/img/lcd.jpg)
+![Hardware](https://raw.github.com/elmoren/TweetABrew/noToken/img/hardware.jpg)
+
+![LCD](https://raw.github.com/elmoren/TweetABrew/noToken/img/lcd.jpg)
