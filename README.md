@@ -2,7 +2,7 @@
 
 TweetABrew - An Arduino Project
 
-## Synapsis
+## Synopsis
 
 This project is uses the DS18B20 temerature sensor to moniter a home brew during the fermentation stage. It sends tweets at specified intervals or when they temp is out of specified range. That way you can adjust the temperature to make your yeast happy. Happy yeast makes for a better beer!
 
